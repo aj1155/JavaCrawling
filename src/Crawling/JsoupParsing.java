@@ -1,3 +1,4 @@
+package Crawling;
 import java.io.IOException;
 import java.util.Iterator;
 import org.apache.http.HttpResponse;
@@ -23,7 +24,7 @@ public class JsoupParsing {
 	        public String handleResponse(HttpResponse response) throws HttpResponseException,
 	            IOException {
 	          // 웹페이지를 그냥 갖어오면 한글이 깨져요. 인코딩 처리를 해야해요.
-	          String res = new String(super.handleResponse(response).getBytes("8859_1"), "euc-kr");
+	          String res = new String(super.handleResponse(response).getBytes("8859_1"), "UTF-8");
 	          Document doc = Jsoup.parse(res);
 	          Elements rows = doc.select("div.tbl_box table tbody tr");
 	          String[] items = new String[] { "순위", "팀", "경기수", "승", "패", "무", "승률","게임차", "연속",
